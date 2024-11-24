@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>{{ exam.title }}</h2>
+    <p>{{ exam.description }}</p>
+    <h3>Questions</h3>
+    <ul class="list-group">
+        {% for question in questions %}
+        <li class="list-group-item">
+            {{ question.question_text }}
+            <ul>
+                <li>A: {{ question.answer_a }}</li>
+                <li>B: {{ question.answer_b }}</li>
+                <li>C: {{ question.answer_c }}</li>
+                <li>D: {{ question.answer_d }}</li>
+            </ul>
+            <strong>Correct Answer: {{ question.correct_answer }}</strong>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'exam:add_question' exam.id %}" class="btn btn-primary mt-3">Add Question</a>
+</div>
+{% endblock %}

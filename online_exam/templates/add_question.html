@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Add Question to {{ exam.title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="question_text">Question:</label>
+            <textarea id="question_text" name="question_text" class="form-control" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>Answers:</label>
+            <input type="text" name="answer_a" placeholder="Answer A" class="form-control" required>
+            <input type="text" name="answer_b" placeholder="Answer B" class="form-control" required>
+            <input type="text" name="answer_c" placeholder="Answer C" class="form-control" required>
+            <input type="text" name="answer_d" placeholder="Answer D" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="correct_answer">Correct Answer:</label>
+            <select id="correct_answer" name="correct_answer" class="form-control" required>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Question</button>
+    </form>
+</div>
+{% endblock %}

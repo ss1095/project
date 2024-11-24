@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Performance Report</h2>
+    <p><strong>Average Score:</strong> {{ average_score|floatformat:2 }}%</p>
+    <p><strong>Highest Score:</strong> {{ highest_score|floatformat:2 }}%</p>
+    <p><strong>Lowest Score:</strong> {{ lowest_score|floatformat:2 }}%</p>
+
+    <h3>Your Exam Results</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Exam</th>
+                <th>Score</th>
+                <th>Date Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exam in student_exams %}
+            <tr>
+                <td>{{ exam.exam.title }}</td>
+                <td>{{ exam.score|floatformat:2 }}%</td>
+                <td>{{ exam.completed_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

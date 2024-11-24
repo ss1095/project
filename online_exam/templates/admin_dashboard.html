@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Admin Dashboard</h2>
+    <p><strong>Total Students:</strong> {{ total_students }}</p>
+    <p><strong>Total Exams:</strong> {{ total_exams }}</p>
+    <p><strong>Total Attempts:</strong> {{ total_attempts }}</p>
+    <p><strong>Average Score:</strong> {{ average_score|floatformat:2 }}%</p>
+
+    <h3>Recent Exam Attempts</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Exam</th>
+                <th>Score</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attempt in StudentExam.objects.all|slice:":10" %}
+            <tr>
+                <td>{{ attempt.student.username }}</td>
+                <td>{{ attempt.exam.title }}</td>
+                <td>{{ attempt.score|floatformat:2 }}%</td>
+                <td>{{ attempt.completed_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+

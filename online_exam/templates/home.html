@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h1>Welcome to the Online Examination System</h1>
+    <p>Manage exams, take quizzes, and track results efficiently.</p>
+    <div>
+        <a href="{% url 'exams:create_exam' %}" class="btn btn-primary">Create Exam</a>
+        <a href="{% url 'exams:take_exam_list' %}" class="btn btn-secondary">Take Exam</a>
+    </div>
+</div>
+{% endblock %}
